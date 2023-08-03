@@ -14,9 +14,9 @@ export class AddTripComponent implements OnInit {
   submitted = false;
 
   constructor(
-  private formBuilder: FormBuilder,
-  private router: Router,
-  private tripService: TripDataService
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private tripService: TripDataService
   ) { }
 
   ngOnInit() {
@@ -36,10 +36,10 @@ export class AddTripComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if(this.addForm.valid){
-    this.tripService.addTrip(this.addForm.value)
-    .then( data => {
-      console.log(data);
-      this.router.navigate(['']);
+      this.tripService.addTrip(this.addForm.value)
+      .then( data => {
+        console.log(data);
+        this.router.navigate(['']);
     });
   }
 }

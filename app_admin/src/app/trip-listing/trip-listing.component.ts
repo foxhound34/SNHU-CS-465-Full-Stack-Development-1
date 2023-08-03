@@ -19,12 +19,12 @@ export class TripListingComponent implements OnInit {
 
   constructor(
     private tripDataService: TripDataService,
-    private router: Router
+    private router : Router
     ) { }
 
     private addTrip(): void {
-      console.log('Inside TripListingComponent#addTrip');
-      this.router.navigate(['add-trip']);
+      console.log("Inside TripListingComponent#addTrip");
+      this.router.navigate([ 'add-trip']);
     }
 
     private getTrips(): void {
@@ -37,8 +37,8 @@ export class TripListingComponent implements OnInit {
             this.trips = foundTrips;
           });
     }
-  ngOnInit() {
-    this.getTrips();
+  ngOnInit() : void {
+    this.getTrips(); 
   }
 
 }

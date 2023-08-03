@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { Http } from "@angular/http";
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
-import { Trip } from "../models/trip";
+import { Trip } from '../models/trip';
 
 @Injectable()
 export class TripDataService {
@@ -9,10 +9,10 @@ export class TripDataService {
   constructor(private http: Http) {}
 
   private apiBaseUrl = "http://localhost:3000/api/";
-  private tripUrl = `${this.apiBaseUrl}trips/`;
+  private tripUrl = `${this.apiBaseUrl}trips`;
 
   public addTrip(formData: Trip): Promise<Trip> {
-    console.log("Inside TripDataService#addTrip");
+    console.log('Inside TripDataService#addTrip');
     return this.http
       .post(this.tripUrl, formData)
       .toPromise()
