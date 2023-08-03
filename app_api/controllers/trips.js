@@ -1,9 +1,9 @@
 const mongoose = require("mongoose"); //.set('debug' , true);
-const Model = mongoose.model("trips");
+const Trip = mongoose.model("trips");
 
 //GET: /trips = lists all the trips
 const tripsList = async (req, res) => {
-    Model
+    Trip
         .find({}) // empty filter for all
         .exec((err, trips) => {
             if(!trips) {
@@ -24,7 +24,8 @@ const tripsList = async (req, res) => {
 
 //GET: /trips/:tripCode - returns a single trip
 const tripsFindCode = async (req, res) => {
-    Model
+    console.log('tripsFindCode invoke with ' + req.params.tripCode);
+   Trip
         .find({ 'code': req.params.tripCode })
         .exec((err, trip) => {
             if (!trip) {
@@ -42,8 +43,33 @@ const tripsFindCode = async (req, res) => {
             }
         });
 };
+
+const tripsAddTrip = async (req, res) => {
+    Trip
+    .create({
+        code: req.body.code,
+        name: req.body.name,
+        length: req.body.length,
+        start: req.body.start,
+        perPerson: req.body.perPerson,
+        image: req.body.image,
+        description: req.body.description
+    },
+    (err, trip) => {
+        if (err) {
+            return res
+                .status(400) // bad request, invalid content
+                .json(err);
+        } else {
+            return res
+                .status(201) // created
+                .json(trip);
+        }
+    });
+}
   
   module.exports = {
     tripsList,
     tripsFindCode,
+    tripsAddTrip
 };
