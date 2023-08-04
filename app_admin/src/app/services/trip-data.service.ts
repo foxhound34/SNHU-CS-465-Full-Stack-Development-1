@@ -1,31 +1,30 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
 
-import { Trip } from '../models/trip';
+import { Trip } from "../models/trip";
 
 @Injectable()
 export class TripDataService {
-  
   constructor(private http: Http) {}
 
   private apiBaseUrl = "http://localhost:3000/api/";
-  private tripUrl = `${this.apiBaseUrl}trips`;
+  private tripUrl = `${this.apiBaseUrl}trips/`;
 
-  public addTrip(formData: Trip): Promise<Trip> {
-    console.log('Inside TripDataService#addTrip');
+  public getTrips(): Promise<Trip[]> {
+    console.log("Inside TripDataService#getTrips");
     return this.http
-      .post(this.tripUrl, formData)
+      .get(`${this.apiBaseUrl}trips`)
       .toPromise()
-      .then(response => response.json() as Trip[])
+      .then((response) => response.json() as Trip[])
       .catch(this.handleError);
   }
 
-  public getTrips(): Promise<Trip[]> {
-    console.log('Inside TripDataService#getTrips');
+  public addTrip(formData: Trip): Promise<Trip> {
+    console.log("Insided TripDataService#addTrip");
     return this.http
-      .get(this.tripUrl)
+      .post(this.tripUrl, formData)
       .toPromise()
-      .then(response => response.json() as Trip[])
+      .then((response) => response.json() as Trip[])
       .catch(this.handleError);
   }
 
@@ -33,5 +32,4 @@ export class TripDataService {
     console.error("Something has gone wrong", error);
     return Promise.reject(error.message || error);
   }
-
 }
