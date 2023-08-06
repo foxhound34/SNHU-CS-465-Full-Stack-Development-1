@@ -23,7 +23,7 @@ export class TripListingComponent implements OnInit {
   ) {}
 
   private addTrip(): void {
-    this.router.navigate(["add-trip"]);
+    this.router.navigate(['add-trip']);
   }
 
   private getTrips(): void {

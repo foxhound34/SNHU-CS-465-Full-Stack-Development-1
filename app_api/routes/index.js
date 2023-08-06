@@ -13,6 +13,8 @@ router
   .get(tripsController.tripsList)
   .put(tripsController.tripsUpdateTrip);
 
-router.route("/trips/:tripCode").get(tripsController.tripsFindCode);
+router
+  .route("/trips/:tripCode")
+  .get(tripsController.tripsFindCode);
 
 module.exports = router;

@@ -32,10 +32,10 @@ export class EditTripComponent implements OnInit {
       _id: [],
       code: [tripCode, Validators.required],
       name: ["", Validators.required],
-      length: ["", Validators.required],
+      perPerson: ["", Validators.required],
       start: ["", Validators.required],
       resort: ["", Validators.required],
-      perPerson: ["", Validators.required],
+      length: ["", Validators.required],
       image: ["", Validators.required],
       description: ["", Validators.required],
     });
