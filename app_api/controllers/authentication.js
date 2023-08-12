@@ -26,6 +26,7 @@ const register = (req, res) => {
         }
     })
 };
+
 const login = (req, res) => {
     if (!req.body.email || !req.body.password) {
         return res
@@ -50,6 +51,7 @@ const login = (req, res) => {
         }
     })(req, res);
 };
+
     module.exports = {
         register,
         login

@@ -1,10 +1,11 @@
 import { Injectable, Inject } from "@angular/core";
-import { Http, Headers } from "@angular/http";
+import { Http, Headers} from "@angular/http";
 
-import { Trip } from "../models/trip";
-import { BROWSER_STORAGE } from "../storage";
-import { User } from "../models/user";
 import { AuthResponse } from "../models/authresponse";
+import { BROWSER_STORAGE } from "../storage";
+import { Trip } from "../models/trip";
+import { User } from "../models/user";
+
 
 @Injectable()
 export class TripDataService {
@@ -43,7 +44,7 @@ export class TripDataService {
     return this.http
       .post(this.tripUrl, formData, { headers: headers })
       .toPromise()
-      .then((response) => response.json() as Trip[])
+      .then(response => response.json() as Trip[])
       .catch(this.handleError);
   }
 
@@ -78,7 +79,7 @@ export class TripDataService {
     return this.http
       .post(url, user)
       .toPromise()
-      .then((response) => response.json() as AuthResponse)
+      .then(response => response.json() as AuthResponse)
       .catch(this.handleError);
   }
 }

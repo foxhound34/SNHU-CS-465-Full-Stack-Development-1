@@ -7,7 +7,6 @@ import { TripDataService } from '../services/trip-data.service';
 @Injectable({
     providedIn: 'root'
 })
-
 export class AuthenticationService {
 
 constructor(

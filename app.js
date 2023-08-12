@@ -9,6 +9,7 @@ const hbs = require('hbs');
 const passport = require('passport');
 
 require('./app_api/database/db');
+
 require('./app_api/config/passport');
 
 const indexRouter  = require('./app_server/routes/index');
